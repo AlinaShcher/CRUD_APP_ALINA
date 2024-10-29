@@ -1,6 +1,6 @@
 <?php
 namespace machine\src\controller\ProductController;
-
+require_once "bootstrap.php";
 use src\entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
