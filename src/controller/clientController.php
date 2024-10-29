@@ -1,5 +1,5 @@
 <?php
-namespace machine\src\clientController;
+namespace machine\src\controller\clientController;
 use src\entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,16 +23,12 @@ class clientController extends AbstractController
 
     public function create(EntityManagerInterface $entityManager)
     {
-        try {
             $client = new Client();
 
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return new Response('Saved new product with id ' . $client->getId());
-        } catch (PDOException $exception) {
-            echo "Ошибка: " . $exception->getMessage();
-        }
+            return new Response('Saved new client with id ' . $client->getId());
 
     }
 
@@ -43,3 +39,4 @@ class clientController extends AbstractController
         $client = $entityManager->getRepository(Client::class)->find($id);
         return new Response($client->getFullname());
     }
+}
