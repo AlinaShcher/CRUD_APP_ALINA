@@ -1,10 +1,10 @@
 <?php
+namespace app\service\ClientService;
 use src\repository\clientRepository;
 use src\entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
 class ClientService
 {
-    private clientRepository $clientRepository;
     private EntityManagerInterface $entityManager;
 
     public function __construct(clientRepository $clientRepository, EntityManagerInterface $entityManager)
