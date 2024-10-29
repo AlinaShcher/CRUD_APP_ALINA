@@ -1,5 +1,9 @@
 <?php
+namespace src\entity\Product;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use src\entity\Client\Client;
+use src\entity\Specialist\Specialist;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'product')]
@@ -7,17 +11,21 @@ class Product
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     private ?int $id = null;
-    #[ORM\Column(type: 'integer', name: '')]
+    #[ORM\Column(Types::INTEGER)]//name: 'idClient'
+    #[ManyToMany(targetEntity: Client::class, inversedBy: 'id')]
+    #[JoinTable(name: 'idClient')]
     private int $idClient;
-    #[ORM\Column(type: 'integer', name: '')]
+    #[ORM\Column(Types::INTEGER)]//name: 'idSpecialist'
+    #[ManyToMany(targetEntity: Specialist::class, inversedBy: 'id')]
+    #[JoinTable(name: 'idSpecialist')]
     private int $idSpecialist;
-    #[ORM\Column(type: 'string', name: '')]
+    #[ORM\Column(Types:: STRING)]//name: 'model'
     private string $model;
-    #[ORM\Column(type: 'string', name: '')]
+    #[ORM\Column(Types:: STRING)]//name: 'status'
     private string $status;
-    #[ORM\Column(type: 'string', name: '')]
+    #[ORM\Column(Types::STRING)]//name: 'cost'
     private string $cost;
 
     public function getId(): ?int
