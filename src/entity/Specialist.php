@@ -1,22 +1,24 @@
 <?php
-
+namespace src\entity\Specialist;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Types\Types;
 #[ORM\Entity]
 #[ORM\Table(name: 'specialist')]
 class Specialist
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue]
+    #[ORM\Column(Types::INTEGER)]
+    #[ORM\GeneratedValue(strategy:"SEQUENCE")]
+    #[ManyToMany(targetEntity: Product::class, mappedBy: 'idSpecialist')]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(Types:: STRING)]
     private string $fullName;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(Types:: STRING)]
     private string $department;
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(Types::INTEGER)]
     private string $wages;
 
     public function getId(): ?int
