@@ -1,5 +1,6 @@
 <?php
 namespace machine\src\controller\clientController;
+require_once "bootstrap.php";
 use src\entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
