@@ -12,20 +12,28 @@ class Product
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
+    #[ORM\SequenceGenerator]
     private ?int $id = null;
-    #[ORM\Column(Types::INTEGER)]//name: 'idClient'
     #[ManyToMany(targetEntity: Client::class, inversedBy: 'id')]
     #[JoinTable(name: 'idClient')]
+
+    #[ORM\Column(Types::INTEGER)]
+    #[ORM\Column(name: 'idClient' )]//
+
     private int $idClient;
-    #[ORM\Column(Types::INTEGER)]//name: 'idSpecialist'
     #[ManyToMany(targetEntity: Specialist::class, inversedBy: 'id')]
     #[JoinTable(name: 'idSpecialist')]
+    #[ORM\Column(Types::INTEGER)]//name: ''
+    #[ORM\Column(name: 'idSpecialist' )]//
     private int $idSpecialist;
-    #[ORM\Column(Types:: STRING)]//name: 'model'
+    #[ORM\Column(Types:: STRING)]//name: ''
+    #[ORM\Column(name: 'model' )]//
     private string $model;
-    #[ORM\Column(Types:: STRING)]//name: 'status'
+    #[ORM\Column(Types:: STRING)]//name: ''
+    #[ORM\Column(name: 'status' )]//
     private string $status;
-    #[ORM\Column(Types::STRING)]//name: 'cost'
+    #[ORM\Column(Types::STRING)]//name: ''
+    #[ORM\Column(name: 'cost' )]//
     private string $cost;
 
     public function getId(): ?int
