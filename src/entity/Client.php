@@ -10,19 +10,22 @@ use src\entity\Product\Product;
 #[ORM\Table(name: 'client')]
 class Client
 {
-    #[ORM\Id] # первичный ключ сущности
-    #[ORM\Column(Types::INTEGER)]// name:'id'
-    #[ORM\GeneratedValue(strategy:"SEQUENCE")] # автоматически генерирует значения для первичного ключа
     #[ManyToMany(targetEntity: Product::class, mappedBy: 'idClient')]
+    #[ORM\Id] # первичный ключ сущности
+    #[ORM\Column(type:'integer', name:'id')]//
+    #[ORM\GeneratedValue(strategy:"SEQUENCE")] # автоматически генерирует значения для первичного ключа
+    #[ORM\SequenceGenerator]
+
     private ?int $id=null;
 
-    #[ORM\Column(Types:: STRING)]// , name:'fullName'
+    #[ORM\Column(type: 'string', name:'fullName')]
+
     private string $fullName;
 
-    #[ORM\Column(Types:: STRING)]//, name: 'sex'
+    #[ORM\Column(type: 'string', name: 'sex')]//
     private string $sex;
 
-    #[ORM\Column(Types::INTEGER)]// , name: 'phoneName'
+    #[ORM\Column(type: 'string', name: 'phoneName')]//
     private string $phoneNumber;
 # но я не понимаю как здесь тогла сделать construct? через продукты? Или оставить всё как было?
     private Collection $products;
