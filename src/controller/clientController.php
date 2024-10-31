@@ -1,21 +1,15 @@
 <?php
-namespace machine\src\controller\clientController;
-require_once "bootstrap.php";
+namespace machine\src\controller\ClientController;
 use src\entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-use SrcEntityClient;
-use SrcFormClientType;
-use SrcRepositoryClientRepository;
-use SymfonyBundleFrameworkBundleControllerAbstractController;
-use SymfonyComponentHttpFoundationRequest;
-use SymfonyComponentHttpFoundationResponse;
-use SymfonyComponentRoutingAnnotationRoute;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class clientController extends AbstractController
+
+class ClientController extends AbstractController
 {
     public function __construct()
     {
