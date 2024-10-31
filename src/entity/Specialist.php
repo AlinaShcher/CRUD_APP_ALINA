@@ -8,17 +8,21 @@ use Doctrine\DBAL\Types\Types;
 class Specialist
 {
     #[ORM\Id]
+    #[ManyToMany(targetEntity: Product::class, mappedBy: 'idSpecialist')]
     #[ORM\Column(Types::INTEGER)]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
-    #[ManyToMany(targetEntity: Product::class, mappedBy: 'idSpecialist')]
+    #[ORM\SequenceGenerator]
     private ?int $id = null;
 
     #[ORM\Column(Types:: STRING)]
+    #[ORM\Column(name: 'fullName' )]//
     private string $fullName;
 
     #[ORM\Column(Types:: STRING)]
+    #[ORM\Column(name: 'department' )]
     private string $department;
     #[ORM\Column(Types::INTEGER)]
+    #[ORM\Column(name: 'wages' )]
     private string $wages;
 
     public function getId(): ?int
