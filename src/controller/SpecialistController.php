@@ -1,13 +1,18 @@
 <?php
 namespace machine\src\controller\SpecialistController; ;
-require_once "bootstrap.php";
 
-use SrcEntitySpecialist;
-use SrcRepositoryProductSpecialist;
-use SymfonyBundleFrameworkBundleControllerAbstractController;
-use SymfonyComponentHttpFoundationRequest;
-use SymfonyComponentHttpFoundationResponse;
-use SymfonyComponentRoutingAnnotationRoute;
+use src\entity\Specialist;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
+
+
+
 
 class SpecialistController extends AbstractController
 {
