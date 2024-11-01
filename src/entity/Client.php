@@ -3,29 +3,28 @@ namespace src\entity\Client;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Type;
 use src\entity\Product\Product;
-
+use Doctrine\DBAL\Types\Types;
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[ORM\Table(name: 'client')]
 class Client
 {
     #[ManyToMany(targetEntity: Product::class, mappedBy: 'idClient')]
     #[ORM\Id] # первичный ключ сущности
-    #[ORM\Column(type:'integer', name:'id')]//
+    #[ORM\Column(name:'id', type: TYPES::INTEGER )]//
     #[ORM\GeneratedValue(strategy:"SEQUENCE")] # автоматически генерирует значения для первичного ключа
     #[ORM\SequenceGenerator]
 
     private ?int $id=null;
 
-    #[ORM\Column(type: 'string', name:'fullName')]
+    #[ORM\Column(name:'fullName', type: TYPES::STRING )]
 
     private string $fullName;
 
-    #[ORM\Column(type: 'string', name: 'sex')]//
+    #[ORM\Column(name: 'sex', type: TYPES::STRING)]//
     private string $sex;
 
-    #[ORM\Column(type: 'string', name: 'phoneName')]//
+    #[ORM\Column( name: 'phoneName', type: TYPES::STRING)]//
     private string $phoneNumber;
 # но я не понимаю как здесь тогла сделать construct? через продукты? Или оставить всё как было?
     private Collection $products;
