@@ -9,20 +9,19 @@ class Specialist
 {
     #[ORM\Id]
     #[ManyToMany(targetEntity: Product::class, mappedBy: 'idSpecialist')]
-    #[ORM\Column(Types::INTEGER)]
+    #[ORM\Column(name: 'id', type: Types::INTEGER)]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
     private ?int $id = null;
 
-    #[ORM\Column(Types:: STRING)]
-    #[ORM\Column(name: 'fullName' )]//
+    #[ORM\Column(name: 'fullName', type: TYPES::STRING )]//
     private string $fullName;
 
-    #[ORM\Column(Types:: STRING)]
-    #[ORM\Column(name: 'department' )]
+
+    #[ORM\Column(name: 'department', type: TYPES::STRING )]
     private string $department;
-    #[ORM\Column(Types::INTEGER)]
-    #[ORM\Column(name: 'wages' )]
+
+    #[ORM\Column(name: 'wages', type: TYPES::INTEGER )]
     private string $wages;
 
     public function getId(): ?int
