@@ -10,30 +10,28 @@ use src\entity\Specialist\Specialist;
 class Product
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(name: 'id', type: TYPES::INTEGER)]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
     private ?int $id = null;
     #[ManyToMany(targetEntity: Client::class, inversedBy: 'id')]
     #[JoinTable(name: 'idClient')]
 
-    #[ORM\Column(Types::INTEGER)]
-    #[ORM\Column(name: 'idClient' )]//
+    #[ORM\Column(name: 'idClient', type: Types::INTEGER)]
 
     private int $idClient;
     #[ManyToMany(targetEntity: Specialist::class, inversedBy: 'id')]
     #[JoinTable(name: 'idSpecialist')]
-    #[ORM\Column(Types::INTEGER)]//name: ''
-    #[ORM\Column(name: 'idSpecialist' )]//
+    #[ORM\Column(name: 'idSpecialist', type: Types::INTEGER)]//name: ''
     private int $idSpecialist;
-    #[ORM\Column(Types:: STRING)]//name: ''
-    #[ORM\Column(name: 'model' )]//
+
+    #[ORM\Column(name: 'model', type: Types:: STRING)]//name: ''
     private string $model;
-    #[ORM\Column(Types:: STRING)]//name: ''
-    #[ORM\Column(name: 'status' )]//
+
+    #[ORM\Column(name: 'status', type: Types:: STRING)]//name: ''
     private string $status;
-    #[ORM\Column(Types::STRING)]//name: ''
-    #[ORM\Column(name: 'cost' )]//
+
+    #[ORM\Column(name: 'cost', type: Types::STRING)]//name: ''
     private string $cost;
 
     public function getId(): ?int
