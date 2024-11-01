@@ -20,7 +20,7 @@ class SpecialistController extends AbstractController
 
     public function __construct(SpecialistRepository $specialistRepository)
     {
-        $this->specialistRepository = $specialistRepository;
+        $this->specialistRepository = new $SpecialistRepository ();
     }
 
     public function index(): Response
