@@ -1,29 +1,32 @@
 <?php
-namespace machine\src\controller\ClientController;
-use src\entity\Client;
+namespace machine\src\controller\ProductController;
+
+use src\entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use machine\src\service\ProductService;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 
-class ClientController extends AbstractController
+class ProductController extends AbstractController
 {
+    private ProductService $productservice;
     public function __construct()
     {
-
+        $this->productservice= new ProductService();
     }
 
     public function create(EntityManagerInterface $entityManager)
     {
-            $client = new Client();
+        $product = new Product();
 
-            $entityManager->persist($client);
-            $entityManager->flush();
+        $entityManager->persist($product);
+        $entityManager->flush();
 
-            return new Response('Saved new client with id ' . $client->getId());
+        return new Response('Saved new product with id ' . $product->getId());
 
     }
 
@@ -31,7 +34,7 @@ class ClientController extends AbstractController
     public function show(EntityManagerInterface $entityManager, int $id): Response
     {
 
-        $client = $entityManager->getRepository(Client::class)->find($id);
-        return new Response($client->getFullname());
+        $product = $entityManager->getRepository(Product::class)->find($id);
+        return new Response($product->$model());
     }
 }
