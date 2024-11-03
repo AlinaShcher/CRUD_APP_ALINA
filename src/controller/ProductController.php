@@ -1,40 +1,35 @@
 <?php
-namespace machine\src\controller\ProductController;
-
+namespace src\controller\ProductController;
 use src\entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use machine\src\service\ProductService;
+use src\service\ProductService;
+//use Doctrine\ORM\EntityManagerInterface;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
-
-class ProductController extends AbstractController
+class ProductController
 {
     private ProductService $productservice;
     public function __construct()
     {
         $this->productservice= new ProductService();
     }
-
-    public function create(EntityManagerInterface $entityManager)
+    public function createProduct()
     {
-        $product = new Product();
+        if (isset($_REQUEST['id']) )
+        {
+            $this->productservice->createProduct(($_REQUEST['id']));
+        } else {
+            echo "Ошибка";
+        }
+    }
 
-        $entityManager->persist($product);
-        $entityManager->flush();
-
-        return new Response('Saved new product with id ' . $product->getId());
+    public function deleteProduct()
+    {
+        if (isset($_REQUEST['id'])){
+            $this->productservice->deleteProduct($_REQUEST['id']);
+        } else {
+            echo 'Ошибка';
+        }
 
     }
 
 
-    public function show(EntityManagerInterface $entityManager, int $id): Response
-    {
-
-        $product = $entityManager->getRepository(Product::class)->find($id);
-        return new Response($product->$model());
-    }
 }
