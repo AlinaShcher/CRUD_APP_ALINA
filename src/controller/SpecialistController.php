@@ -20,6 +20,4 @@ class SpecialistController
             echo 'Ошибка';
         }
     }
-
-
 }
