@@ -4,6 +4,8 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use src\entity\Client\Client;
 use src\entity\Specialist\Specialist;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'product')]
@@ -13,16 +15,12 @@ class Product
     #[ORM\Column(name: 'id', type: TYPES::INTEGER)]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
-    private ?int $id = null;
-    #[ManyToMany(targetEntity: Client::class, inversedBy: 'id')]
-    #[JoinTable(name: 'idClient')]
-
-    #[ORM\Column(name: 'idClient', type: Types::INTEGER)]
-
+    private int $id;
+    #[ManyToOne(targetEntity: Client::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'idClient', referencedColumnName: 'id')]
     private int $idClient;
-    #[ManyToMany(targetEntity: Specialist::class, inversedBy: 'id')]
-    #[JoinTable(name: 'idSpecialist')]
-    #[ORM\Column(name: 'idSpecialist', type: Types::INTEGER)]//name: ''
+    #[ManyToOne(targetEntity: Specialist::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'idSpecialist', referencedColumnName: 'id')]
     private int $idSpecialist;
 
     #[ORM\Column(name: 'model', type: Types:: STRING)]//name: ''
