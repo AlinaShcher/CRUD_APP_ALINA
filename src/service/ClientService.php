@@ -1,50 +1,26 @@
 <?php
-namespace app\service\ClientService;
+namespace src\service\ClientService;
 use src\repository\clientRepository;
 use src\entity\Client;
-use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 class ClientService
 {
-    private EntityManagerInterface $entityManager;
+    private $entityManager;
 
-    public function __construct(clientRepository $clientRepository, EntityManagerInterface $entityManager)
+    public function __construct()
     {
-        $this->clientRepository = $clientRepository;
-        $this->entityManager = $entityManager;
+        $this->entityManager = getEntityManager();
     }
 
-    public function createClient(string $name, string $email): Client
+    public function deleteClient (int $id)
     {
-        $client = new Client();
-        $client->setFullname($fullName);
-        $client->setSex($sex);
-        $client->setPhonenumber($phoneNumber);
-        $this->entityManager->persist($client);
-        $this->entityManager->flush();
+        try {
+            $client = $this->entityManager->getRepository(Client::class)->find($id);
+            $this->entityManager->remove($client);
 
-        return $client;
-    }
+        } catch (Exception $e) {
 
-    public function getClientById(int $id): ?Client
-    {
-        return $this->clientRepository->find($id);
-    }
-
-    public function updateClient(Client $client, string $fullName, string $sex, int $phoneNumber): Client
-    {
-        $client->setName($fullName);
-        $client->setSex($sex);
-        $client->setPhonenumber($phoneNumber);
-
-        $this->entityManager->flush();
-
-        return $client;
-    }
-
-    public function deleteClient(Client $client): void
-    {
-        $this->entityManager->remove($client);
-        $this->entityManager->flush();
+        }
     }
 }
 
