@@ -8,11 +8,10 @@ use Doctrine\DBAL\Types\Types;
 class Specialist
 {
     #[ORM\Id]
-    #[ManyToMany(targetEntity: Product::class, mappedBy: 'idSpecialist')]
     #[ORM\Column(name: 'id', type: Types::INTEGER)]
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(name: 'fullName', type: TYPES::STRING )]//
     private string $fullName;
