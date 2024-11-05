@@ -17,7 +17,7 @@ class ProductController
         {
             $this->productservice->createProduct(($_REQUEST['id']));
         } else {
-            echo "Ошибка";
+            echo 'Неферные параметры запроса: 400';
         }
     }
 
@@ -26,7 +26,7 @@ class ProductController
         if (isset($_REQUEST['id'])){
             $this->productservice->deleteProduct($_REQUEST['id']);
         } else {
-            echo 'Ошибка';
+            echo 'Неверные параметры запроса: 400';
         }
 
     }
