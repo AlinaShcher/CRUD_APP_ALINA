@@ -16,7 +16,7 @@ class ClientController
         if (isset($_REQUEST['id'])){
             $this->ClientService->delete($_REQUEST['id']);
         } else {
-            echo 'Ошибка';
+            echo 'Неверные параметры запроса: 400';
         }
     }
 }
