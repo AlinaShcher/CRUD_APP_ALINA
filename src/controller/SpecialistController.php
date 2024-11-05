@@ -10,14 +10,14 @@ class SpecialistController
     {
         $this->SpecialistService = $specialistservice;
     }
-    
+
     public function deleteSpecialist()
     {
         if (isset($_REQUEST['id']))
         {
             $this->specialistservice->deleteSpecialist($_REQUEST['id']);
         } else {
-            echo 'Ошибка';
+            echo 'Неверные параметры запроса: 400';
         }
     }
 }
