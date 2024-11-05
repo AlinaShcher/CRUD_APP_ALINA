@@ -15,11 +15,11 @@ class ClientService
     public function deleteClient (int $id)
     {
         try {
-            $client = $this->entityManager->getRepository(Client::class)->find($id);
+            $client = $this->entityManager->find($id);
             $this->entityManager->remove($client);
 
         } catch (Exception $e) {
-
+            echo "Ошибка: " . $e->getMessage();
         }
     }
 }
