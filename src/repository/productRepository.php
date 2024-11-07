@@ -1,58 +1,23 @@
 <?php
+namespace src\repository\ProductRepository;
+use src\entity\Product;
 require_once "bootstrap.php";
 class productRepository{
-    public function creatProduct(){
-        $newProductName = $argv[1];
 
-        $product = new Product();
-        $product->setName($newProductName);
-
-        $entityManager->persist($product);
-        $entityManager->flush();
-
-        echo "Создай продукт с ID " . $product->getId() . "\n";
-
-    }
-    public function readProduct(){
-        $productRepository = $entityManager->getRepository('Product');
-        $products = $productRepository->findAll();
-
-        foreach ($products as $product) {
-            echo sprintf("-%s\n", $product->getName());
-        }
-    }
-    public function updateProduct()
+    public function bestSpecialist()
     {
-        $id = $argv[1];
-        $newName = $argv[2];
-
-        $product = $entityManager->find('Product', $id);
-
-        if ($product === null) {
-            echo "Product $id does not exist.\n";
-            exit(1);
+        $products=new Product();
+        $specialistCounts = [];
+        foreach ($products as $product)
+        {
+            $idSpecialist = $product->idSpecialist;
+            if (!isset($specialistCounts[$idSpecialist]))
+            {
+                $specialistCounts[$idSpecialist] = 0;
+            }
+            $specialistCounts[$idSpecialist]++;
         }
-
-        $product->setName($newName);
-
-        $entityManager->flush();
+$mostId = array_search(max($specialistCounts), $specialistCounts);
+echo "Специалист с ID $mostId упоминался чаще всего.\n";
     }
-    public function deleteProduct(){
-        $this->_em->remove($product);
-        $this->_em->flush();
-
-    }
-    public function showProduct(){
-        $id = $argv[1];
-        $product = $entityManager->find('Product', $id);
-
-        if ($product === null) {
-            echo "Продукт не найден.\n";
-            exit(1);
-        }
-
-        echo sprintf("-%s\n", $product->getName());
-
-    }
-
 }
