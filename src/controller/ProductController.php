@@ -2,6 +2,7 @@
 namespace src\controller\ProductController;
 use src\entity\Product;
 use src\service\ProductService;
+use Exception;
 //use Doctrine\ORM\EntityManagerInterface;
 
 class ProductController
@@ -13,20 +14,19 @@ class ProductController
     }
     public function createProduct()
     {
-        if (isset($_REQUEST['id']) )
+        if (!isset($_REQUEST['id']) )
         {
-            $this->productservice->createProduct(($_REQUEST['id']));
+           throw new Exception("Неверные параметры запроса", 400);
         } else {
-            echo 'Неферные параметры запроса: 400';
+            $this->productservice->createProduct(($_REQUEST['id']));
         }
     }
-
     public function deleteProduct()
     {
-        if (isset($_REQUEST['id'])){
-            $this->productservice->deleteProduct($_REQUEST['id']);
+        if (!isset($_REQUEST['id'])){
+            throw new Exception("Неверные параметры запроса", 400);
         } else {
-            echo 'Неверные параметры запроса: 400';
+            $this->productservice->deleteProduct($_REQUEST['id']);
         }
 
     }
