@@ -3,7 +3,7 @@ namespace src\service\SpecialistService;
 use src\repository\SpecialistRepository;
 use src\entity\Specialist;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
+use Doctrine\ORM\Exception\ORMException;
 class SpecialistService
 {
     private $entityManager;
@@ -19,7 +19,7 @@ class SpecialistService
             $specialist = $this->entityManager->find(Specialist::class, $id);
             $this->entityManager->remove($specialist);
             $this->entityManager->flush();
-        } catch (Exception $e) {
+        } catch (ORMException $e) {
             echo "Ошибка: " . $e->getMessage();
         }
     }
