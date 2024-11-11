@@ -16,9 +16,9 @@ class SpecialistService
     public function deleteSpecialist (int $id)
     {
         try {
-            $specialist = $this->entityManager->find($id);
+            $specialist = $this->entityManager->find(Specialist::class, $id);
             $this->entityManager->remove($specialist);
-
+            $this->entityManager->flush();
         } catch (Exception $e) {
             echo "Ошибка: " . $e->getMessage();
         }
