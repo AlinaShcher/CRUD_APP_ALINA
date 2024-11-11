@@ -9,9 +9,9 @@ use Doctrine\DBAL\Types\Types;
 #[ORM\Table(name: 'client')]
 class Client
 {
-    #[ORM\Id] # первичный ключ сущности
+    #[ORM\Id]
     #[ORM\Column(name:'id', type: TYPES::INTEGER )]//
-    #[ORM\GeneratedValue(strategy:"SEQUENCE")] # автоматически генерирует значения для первичного ключа
+    #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
     private int $id;
 
@@ -22,9 +22,9 @@ class Client
     private string $sex;
     #[ORM\Column( name: 'phoneName', type: TYPES::STRING)]//
     private string $phoneNumber;
-# но я не понимаю как здесь тогла сделать construct? через продукты? Или оставить всё как было?
+
     private Collection $products;
-    public function __construct(){ #нужен чтобы инициализировать свойства сущности
+    public function __construct(){
         $this->products = new ArrayCollection();
     }
 
