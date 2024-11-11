@@ -4,7 +4,7 @@ use src\repository\ProductRepository;
 use src\entity\Product;
 use src\entity\Client;
 use src\entity\Specialist;
-use Exception;
+use Exception;use Doctrine\ORM\Exception\ORMException;
 class ProductService
 {
     public function __construct()
@@ -27,7 +27,7 @@ class ProductService
                     -> setIdspecialist($ids);
             $this->entityManager->persist($product);
             $this->entityManager->flush();
-        } catch(Exception $e) {
+        } catch(ORMException $e) {
             echo "Ошибка: " . $e->getMessage();
         }
     }
@@ -37,7 +37,7 @@ class ProductService
             $product = $this->entityManager->find(Product::class, $id);
             $this->entityManager->remove($product);
             $this->entityManager->flush();
-        } catch(Exception $e) {
+        } catch(ORMException $e) {
             echo "Ошибка: " . $e->getMessage();
         }
     }
@@ -47,7 +47,7 @@ class ProductService
         try {
             $product = $this->entityManager->find(Product::class, $id);
             return $product;
-        } catch (Exception $e) {
+        } catch (ORMException $e) {
             echo "Ошибка: " . $e->getMessage();
         }
     }
