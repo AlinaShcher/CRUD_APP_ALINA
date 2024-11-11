@@ -2,7 +2,7 @@
 namespace src\service\ClientService;
 use src\repository\clientRepository;
 use src\entity\Client;
-use Exception;
+use Doctrine\ORM\ORMException;
 class ClientService
 {
     private $entityManager;
@@ -11,14 +11,13 @@ class ClientService
     {
         $this->entityManager = getEntityManager();
     }
-
     public function deleteClient (int $id)
     {
         try {
-            $client = $this->entityManager->find($id);
+            $client = $this->entityManager->find(Client::class, $id);
             $this->entityManager->remove($client);
-
-        } catch (Exception $e) {
+            $this->entityManager->flush();
+        } catch (ORMException $e) {
             echo "Ошибка: " . $e->getMessage();
         }
     }
