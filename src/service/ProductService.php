@@ -16,13 +16,13 @@ class ProductService
         try {
             if ($id != null)
             {
-                $product = $this->entityManager->find($id);
+                $product = $this->entityManager->find(Product::class, $id);
             } else {
                 $product = new Product();
             }
 
-            $idc = $this->entityManager->find($idClient);
-            $ids = $this->entityManager->find($idSpecialist);
+            $idc = $this->entityManager->find(Product::class,$idClient);
+            $ids = $this->entityManager->find(Product::class,$idSpecialist);
             $product-> setIdclient($idc)
                     -> setIdspecialist($ids);
             $this->entityManager->persist($product);
@@ -34,7 +34,7 @@ class ProductService
     public function deleteProduct( int $id)
     {
         try {
-            $product = $this->entityManager->find($id);
+            $product = $this->entityManager->find(Product::class, $id);
             $this->entityManager->remove($product);
             $this->entityManager->flush();
         } catch(Exception $e) {
@@ -45,7 +45,7 @@ class ProductService
     public function showProduct(int $id)
     {
         try {
-            $product = $this->entityManager->find($id);
+            $product = $this->entityManager->find(Product::class, $id);
             return $product;
         } catch (Exception $e) {
             echo "Ошибка: " . $e->getMessage();
