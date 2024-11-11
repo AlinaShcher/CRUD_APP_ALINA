@@ -2,7 +2,7 @@
 namespace src\service\ClientService;
 use src\repository\clientRepository;
 use src\entity\Client;
-use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Exception\ORMException;
 class ClientService
 {
     private $entityManager;
