@@ -2,21 +2,20 @@
 namespace src\controller\ClientController;
 use src\entity\Client;
 use src\service\ClientService;
-use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+
 class ClientController
 {
     private ClientService $clientservice;
-
     public function __construct(ClientService $clientservice)
     {
         $this->ClientService = $clientservice;
     }
-
     function deleteClient(){
-        if (isset($_REQUEST['id'])){
-            $this->ClientService->delete($_REQUEST['id']);
+        if (!isset($_REQUEST['id'])){
+            throw new Exception("Неверные параметры запроса", 400);
         } else {
-            echo 'Неверные параметры запроса: 400';
+            $this->ClientService->delete($_REQUEST['id']);
         }
     }
 }
