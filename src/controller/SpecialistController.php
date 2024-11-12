@@ -14,8 +14,8 @@ class SpecialistController
         if (!isset($_REQUEST['id']))
         {
             throw new Exception("Неверные параметры запроса", 400);
-        } else {
-            $this->specialistservice->deleteSpecialist($_REQUEST['id']);
-        }
+        } 
+        $this->specialistservice->deleteSpecialist($_REQUEST['id']);
+        
     }
 }
