@@ -16,11 +16,10 @@ $entityManager = getEntityManager();
 $_REQUEST = array_merge($_REQUEST, json_decode(file_get_contents('php://input')));
 function getController($act,$entityManager)
 {
-
-    $controller = match ($_REQUEST['act']) {
-        'Client' => new ClientController(new СlientService($entityManager)),
-        'Product' => new ProductController(new ProductService($entityManager)),
-        'Specialist' => new SpecialistController(new SpecialistService($entityManager)),
+    $controller = match ($act) {
+        'Client' => new ClientController($entityManager),
+        'Product' => new ProductController($entityManager),
+        'Specialist' => new SpecialistController($entityManager),
         default => throw new Exception("Unknown act: $act", 404)
     };
     return $controller;
