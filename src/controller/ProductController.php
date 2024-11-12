@@ -23,11 +23,12 @@ class ProductController
     }
     public function deleteProduct()
     {
-        if (!isset($_REQUEST['id'])){
+        if (!isset($_REQUEST['id']))
+        {
             throw new Exception("Неверные параметры запроса", 400);
-        } else {
-            $this->productservice->deleteProduct($_REQUEST['id']);
         }
+        $this->productservice->deleteProduct($_REQUEST['id']);
+        
 
     }
 
