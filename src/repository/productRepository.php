@@ -1,23 +1,23 @@
 <?php
 namespace src\repository\ProductRepository;
 use src\entity\Product;
-require_once "bootstrap.php";
-class productRepository{
-
-    public function bestSpecialist()
+use Doctrine\ORM\EntityManagerInterface;
+class productRepository
+{
+    private$entityManager;
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $products=new Product();
-        $specialistCounts = [];
-        foreach ($products as $product)
-        {
-            $idSpecialist = $product->idSpecialist;
-            if (!isset($specialistCounts[$idSpecialist]))
-            {
-                $specialistCounts[$idSpecialist] = 0;
-            }
-            $specialistCounts[$idSpecialist]++;
-        }
-$mostId = array_search(max($specialistCounts), $specialistCounts);
-echo "Специалист с ID $mostId упоминался чаще всего.\n";
+        $this->entityManager = $entityManager;
+    }
+    public function getBestSpecialist()
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb ->select('p.idSpecialist', 'COUNT(*) as count')
+            ->from('Product','p')
+            -> groupBy('p.idSpecialist')
+            -> orderBy ('count','DESC')
+            ->setMaxResults(1);
+        $bestSpecialist=$qb->getQuery();
+        return($bestSpecialist);
     }
 }
