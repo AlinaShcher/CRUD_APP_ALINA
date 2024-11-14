@@ -6,18 +6,16 @@ use Exception;
 
 class ClientController
 {
-    private ClientService $clientservice;
-    public function __construct(ClientService $clientservice)
+    private ClientService $clientService;
+    public function __construct(ClientService $clientService)
     {
-        $this->ClientService = $clientservice;
+        $this->ClientService = $clientService;
     }
     function deleteClient(){
-        if (!isset($_REQUEST['id'])
-        {
+        if (!isset($_REQUEST['id'])) {
             throw new Exception("Неверные параметры запроса", 400);
-        } 
+        }
         $this->ClientService->delete($_REQUEST['id']);
-        
     }
 }
 
