@@ -20,7 +20,7 @@ class SpecialistService
             $this->entityManager->remove($specialist);
             $this->entityManager->flush();
         } catch (ORMException $e) {
-            echo "Ошибка: " . $e->getMessage();
+            throw new ("Ошибка: " . $e->getMessage());
         }
     }
 }
