@@ -7,10 +7,10 @@ use Exception;
 
 class ProductController
 {
-    private ProductService $productservice;
+    private ProductService $productService;
     public function __construct()
     {
-        $this->productservice= new ProductService();
+        $this->productService = new ProductService();
     }
     public function createProduct()
     {
@@ -18,18 +18,15 @@ class ProductController
         {
            throw new Exception("Неверные параметры запроса", 400);
         } else {
-            $this->productservice->createProduct(($_REQUEST['id']));
+            $this->productService->createProduct(($_REQUEST['id']));
         }
     }
     public function deleteProduct()
     {
-        if (!isset($_REQUEST['id']))
-        {
+        if (!isset($_REQUEST['id'])){
             throw new Exception("Неверные параметры запроса", 400);
         }
-        $this->productservice->deleteProduct($_REQUEST['id']);
-        
-
+        $this->productService->deleteProduct($_REQUEST['id']);
     }
 
 
