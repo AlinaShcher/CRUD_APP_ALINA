@@ -4,18 +4,18 @@ use src\entity\Specialist;
 use src\service\SpecialistService;
 class SpecialistController
 {
-    private SpecialistService $specialistservice;
-    public function __construct(SpecialistService $specialistservice)
+    private SpecialistService $specialistService;
+
+    public function __construct(SpecialistService $specialistService)
     {
-        $this->SpecialistService = $specialistservice;
+        $this->specialistService = $specialistService;
     }
+
     public function deleteSpecialist()
     {
-        if (!isset($_REQUEST['id']))
-        {
+        if (!isset($_REQUEST['id'])) {
             throw new Exception("Неверные параметры запроса", 400);
-        } 
-        $this->specialistservice->deleteSpecialist($_REQUEST['id']);
-        
+        }
+        $this->specialistService->deleteSpecialist($_REQUEST['id']);
     }
 }
