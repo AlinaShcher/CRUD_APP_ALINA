@@ -20,7 +20,7 @@ class Specialist
     #[ORM\Column(name: 'department', type: TYPES::STRING )]
     private string $department;
 
-    #[ORM\Column(name: 'wages', type: TYPES::INTEGER )]
+    #[ORM\Column(name: 'wages', type: TYPES::STRING )]
     private string $wages;
 
     public function getId(): ?int
