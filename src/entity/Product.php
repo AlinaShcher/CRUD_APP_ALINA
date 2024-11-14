@@ -7,6 +7,8 @@ use src\entity\Specialist\Specialist;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
+
+
 #[ORM\Entity]
 #[ORM\Table(name: 'product')]
 class Product
@@ -18,10 +20,10 @@ class Product
     private int $id;
     #[ManyToOne(targetEntity: Client::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'idClient', referencedColumnName: 'id')]
-    private int $idClient;
+    private Client $idClient;
     #[ManyToOne(targetEntity: Specialist::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'idSpecialist', referencedColumnName: 'id')]
-    private int $idSpecialist;
+    private Specialist $idSpecialist;
 
     #[ORM\Column(name: 'model', type: Types:: STRING)]//name: ''
     private string $model;
