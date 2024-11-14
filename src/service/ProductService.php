@@ -4,7 +4,8 @@ use src\repository\ProductRepository;
 use src\entity\Product;
 use src\entity\Client;
 use src\entity\Specialist;
-use Exception;use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\Exception\ORMException;
+use Exception;
 class ProductService
 {
     public function __construct()
@@ -14,21 +15,20 @@ class ProductService
     public function createProduct(int $id, int $idClient, int $idSpecialist)
     {
         try {
-            if ($id != null)
-            {
+            if ($id != null) {
                 $product = $this->entityManager->find(Product::class, $id);
             } else {
                 $product = new Product();
             }
 
-            $idc = $this->entityManager->find(Product::class,$idClient);
-            $ids = $this->entityManager->find(Product::class,$idSpecialist);
-            $product-> setIdclient($idc)
-                    -> setIdspecialist($ids);
+            $client = $this->entityManager->find(Product::class,$idClient);
+            $specialist = $this->entityManager->find(Product::class,$idSpecialist);
+            $product-> setIdclient($client)
+                    -> setIdspecialist($specialist);
             $this->entityManager->persist($product);
             $this->entityManager->flush();
         } catch(ORMException $e) {
-            echo "Ошибка: " . $e->getMessage();
+            throw new ("Ошибка: " . $e->getMessage());
         }
     }
     public function deleteProduct( int $id)
@@ -38,7 +38,7 @@ class ProductService
             $this->entityManager->remove($product);
             $this->entityManager->flush();
         } catch(ORMException $e) {
-            echo "Ошибка: " . $e->getMessage();
+            throw new ("Ошибка: " . $e->getMessage());
         }
     }
 
@@ -48,7 +48,7 @@ class ProductService
             $product = $this->entityManager->find(Product::class, $id);
             return $product;
         } catch (ORMException $e) {
-            echo "Ошибка: " . $e->getMessage();
+            throw new ("Ошибка: " . $e->getMessage());
         }
     }
 }
