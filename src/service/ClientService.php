@@ -18,7 +18,7 @@ class ClientService
             $this->entityManager->remove($client);
             $this->entityManager->flush();
         } catch (ORMException $e) {
-            echo "Ошибка: " . $e->getMessage();
+            throw new ("Ошибка: " . $e->getMessage());
         }
     }
 }
