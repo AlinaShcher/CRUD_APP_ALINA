@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ProductRepository
 {
-    private$entityManager;
+    private $entityManager;
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
