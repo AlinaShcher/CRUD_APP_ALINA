@@ -1,7 +1,7 @@
 <?php
-namespace src\controller\ClientController;
-use src\entity\Client;
-use src\service\ClientService;
+namespace Src\Controller\ClientController;
+use Src\Entity\Client;
+use Src\Service\ClientService;
 use Exception;
 
 class ClientController
