@@ -23,8 +23,8 @@ class ProductService
             }
             $client = $this->entityManager->find(Product::class,$idClient);
             $specialist = $this->entityManager->find(Product::class,$idSpecialist);
-            $product-> setIdclient($client)
-                    -> setIdspecialist($specialist);
+            $product-> setClient($client)
+                    -> setSpecialist($specialist);
             $this->entityManager->persist($product);
             $this->entityManager->flush();
         } catch(ORMException $e) {
