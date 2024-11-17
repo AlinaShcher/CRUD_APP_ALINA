@@ -1,9 +1,9 @@
 <?php
-namespace src\entity\Product;
+namespace Src\Entity\Product;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use src\entity\Client\Client;
-use src\entity\Specialist\Specialist;
+use Src\Entity\Client\Client;
+use Src\Entity\Specialist\Specialist;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
