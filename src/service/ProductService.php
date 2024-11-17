@@ -40,7 +40,6 @@ class ProductService
             throw new ("Ошибка: " . $e->getMessage());
         }
     }
-
     public function showProduct(int $id)
     {
         try {
