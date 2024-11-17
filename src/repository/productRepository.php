@@ -17,7 +17,6 @@ class productRepository
             -> groupBy('p.idSpecialist')
             -> orderBy ('count','DESC')
             ->setMaxResults(1);
-        $bestSpecialist=$qb->getQuery();
-        return($bestSpecialist);
+        $qb->getQuery()->getResult();
     }
 }
