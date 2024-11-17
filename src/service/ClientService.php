@@ -12,6 +12,7 @@ class ClientService
     {
         $this->entityManager = $entityManager;
     }
+    
     public function deleteClient (int $id)
     {
         try {
