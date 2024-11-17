@@ -1,9 +1,10 @@
 <?php
-namespace src\service\SpecialistService;
-use src\repository\SpecialistRepository;
-use src\entity\Specialist;
+namespace Src\Service\SpecialistService;
+use Src\Repository\SpecialistRepository;
+use Src\Entity\Specialist;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
+
 class SpecialistService
 {
     private $entityManager;
