@@ -45,8 +45,7 @@ class ProductService
     public function showProduct(int $id)
     {
         try {
-            $product = $this->entityManager->find(Product::class, $id);
-            return $product;
+          return $this->entityManager->find(Product::class, $id);
         } catch (ORMException $e) {
             throw new ("Ошибка: " . $e->getMessage());
         }
