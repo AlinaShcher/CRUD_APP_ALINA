@@ -11,7 +11,7 @@ class ClientController
     {
         $this->ClientService = $clientService;
     }
-    function deleteClient(){
+    public function deleteClient(){
         if (!isset($_REQUEST['id'])) {
             throw new Exception("Неверные параметры запроса", 400);
         }
