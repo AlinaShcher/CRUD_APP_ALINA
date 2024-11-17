@@ -1,21 +1,30 @@
 <?php
-namespace Src\Controller\ClientController;
-use Src\Service\ClientService;
+namespace Src\Controller\ProductController;
+use Src\Service\ProductService;
 use Exception;
-class ClientController
+
+class ProductController
 {
-    private ClientService $clientService;
+    private ProductService $productService;
     
-    public function __construct(ClientService $clientService)
+    public function __construct()
     {
-        $this->ClientService = $clientService;
+        $this->productService = new ProductService();
     }
     
-    public function deleteClient(){
-        if (!isset($_REQUEST['id'])) {
+    public function createProduct()
+    {
+        if (!isset($_REQUEST['id']) ) {
+           throw new Exception("Неверные параметры запроса", 400);
+        }
+        $this->productService->createProduct(($_REQUEST['id']));
+    }
+    
+    public function deleteProduct()
+    {
+        if (!isset($_REQUEST['id'])){
             throw new Exception("Неверные параметры запроса", 400);
         }
-        $this->ClientService->delete($_REQUEST['id']);
+        $this->productService->deleteProduct($_REQUEST['id']);
     }
 }
-
