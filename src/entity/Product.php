@@ -7,7 +7,7 @@ use Src\Entity\Specialist;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
-#[ORM\Entity]
+#[ORM\Entity(ProductRepository::class)]
 #[ORM\Table(name: 'product')]
 class Product
 {
