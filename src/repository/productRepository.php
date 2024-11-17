@@ -12,9 +12,9 @@ class productRepository
     public function getBestSpecialist()
     {
         $qb = $this->entityManager->createQueryBuilder();
-        $qb ->select('p.idSpecialist', 'COUNT(*) as count')
+        $qb ->select('p.Specialist', 'COUNT(*) as count')
             ->from('Product','p')
-            -> groupBy('p.idSpecialist')
+            -> groupBy('p.Specialist')
             -> orderBy ('count','DESC')
             ->setMaxResults(1);
         $qb->getQuery()->getResult();
