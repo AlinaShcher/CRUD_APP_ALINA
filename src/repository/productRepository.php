@@ -1,23 +1,18 @@
 <?php
 namespace Src\Repository\ProductRepository;
+use Doctrine\ORM\EntityRepository;
 use Src\Entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
 
-class ProductRepository
-{
-    private $entityManager;
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
+class ProductRepository extends EntityRepository {
+
     public function getBestSpecialist()
     {
         $qb = $this->entityManager->createQueryBuilder();
-        $qb ->select('p.Specialist', 'COUNT(*) as count')
+        $qb ->select('p.idSpecialist', 'COUNT(*) as count')
             ->from('Product','p')
-            -> groupBy('p.Specialist')
+            -> groupBy('p.idSpecialist')
             -> orderBy ('count','DESC')
             ->setMaxResults(1);
-        $qb->getQuery()->getResult();
+        return getQuery()->getResult();
     }
 }
