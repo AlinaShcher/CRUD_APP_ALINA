@@ -17,11 +17,11 @@ class Product
     #[ORM\SequenceGenerator]
     private int $id;
     #[ManyToOne(targetEntity: Client::class, fetch: 'EAGER')]
-    #[JoinColumn(name: 'idClient', referencedColumnName: 'id')]
-    private Client $idClient;
+    #[JoinColumn(name: 'Client', referencedColumnName: 'id')]
+    private Client $Client;
     #[ManyToOne(targetEntity: Specialist::class, fetch: 'EAGER')]
-    #[JoinColumn(name: 'idSpecialist', referencedColumnName: 'id')]
-    private Specialist $idSpecialist;
+    #[JoinColumn(name: 'Specialist', referencedColumnName: 'id')]
+    private Specialist $Specialist;
 
     #[ORM\Column(name: 'model', type: Types:: STRING)]//name: ''
     private string $model;
@@ -36,13 +36,13 @@ class Product
     {
         return $this->id;
     }
-    public function getIdclient(): ?int
+    public function getClient(): ?int
     {
-        return $this->idClient;
+        return $this->Client;
     }
-    public function getIdspecialist(): ?int
+    public function getSpecialist(): ?int
     {
-        return $this->idSpecialist;
+        return $this->Specialist;
     }
     public function getModel(): string {
         return $this->model;
@@ -60,13 +60,13 @@ class Product
         $this->id = $id;
         return $this;
     }
-    public function setIdclient(int $idClient): void
+    public function setClient(int $Client): void
     {
-        $this->idClient = $idClient;
+        $this->idClient = $Client;
     }
-    public function setIdspecialist(int $idSpecialist): void
+    public function setSpecialist(int $Specialist): void
     {
-        $this->idSpecialist = $idSpecialist;
+        $this->idSpecialist = $Specialist;
     }
     public function setModel(string $model): void
     {
