@@ -5,9 +5,11 @@ use Doctrine\ORM\Exception\ORMException;
 
 class ProductService
 {
-    public function __construct()
+   private EntityManager $entityManager;
+    
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = getEntityManager();
+        $this->entityManager = $entityManager;
     }
     
     public function createProduct(int $id, int $client, int $specialist)
