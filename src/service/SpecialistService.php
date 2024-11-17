@@ -7,13 +7,13 @@ use Doctrine\ORM\Exception\ORMException;
 
 class SpecialistService
 {
-    private $entityManager;
-
-    public function __construct()
+    private EntityManager $entityManager;
+    
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = getEntityManager();
+        $this->entityManager = $entityManager;
     }
-
+    
     public function deleteSpecialist (int $id)
     {
         try {
