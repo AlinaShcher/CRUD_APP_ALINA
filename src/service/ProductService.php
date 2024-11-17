@@ -1,11 +1,12 @@
 <?php
-namespace src\service\ProductService;
-use src\repository\ProductRepository;
-use src\entity\Product;
-use src\entity\Client;
-use src\entity\Specialist;
+namespace Src\Service\ProductService;
+use Src\Repository\ProductRepository;
+use Src\Entity\Product;
+use Src\Entity\Client;
+use Src\Entity\Specialist;
 use Doctrine\ORM\Exception\ORMException;
 use Exception;
+
 class ProductService
 {
     public function __construct()
