@@ -3,6 +3,7 @@ namespace Src\Service\ClientService;
 use Src\Repository\ClientRepository;
 use Src\Entity\Client;
 use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\EntityManager;
 
 class ClientService
 {
