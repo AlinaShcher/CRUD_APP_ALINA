@@ -1,7 +1,7 @@
 <?php
-namespace src\controller\SpecialistController; ;
-use src\entity\Specialist;
-use src\service\SpecialistService;
+namespace Src\Controller\SpecialistController; ;
+use Src\Entity\Specialist;
+use Src\Service\SpecialistService;
 class SpecialistController
 {
     private SpecialistService $specialistService;
