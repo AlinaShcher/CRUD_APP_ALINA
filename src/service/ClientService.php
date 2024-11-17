@@ -7,12 +7,11 @@ use Doctrine\ORM\Exception\ORMException;
 class ClientService
 {
     private $entityManager;
-
-    public function __construct()
-    {
-        $this->entityManager = getEntityManager();
-    }
     
+    public function __construct(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
     public function deleteClient (int $id)
     {
         try {
