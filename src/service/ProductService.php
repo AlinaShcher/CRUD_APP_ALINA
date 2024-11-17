@@ -2,6 +2,7 @@
 namespace Src\Service\ProductService;
 use Src\Entity\Product;
 use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\EntityManager;
 
 class ProductService
 {
