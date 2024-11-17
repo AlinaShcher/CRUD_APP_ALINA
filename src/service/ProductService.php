@@ -1,11 +1,7 @@
 <?php
 namespace Src\Service\ProductService;
-use Src\Repository\ProductRepository;
 use Src\Entity\Product;
-use Src\Entity\Client;
-use Src\Entity\Specialist;
 use Doctrine\ORM\Exception\ORMException;
-use Exception;
 
 class ProductService
 {
@@ -13,7 +9,8 @@ class ProductService
     {
         $this->entityManager = getEntityManager();
     }
-    public function createProduct(int $id, int $idClient, int $idSpecialist)
+    
+    public function createProduct(int $id, int $client, int $specialist)
     {
         try {
             if ($id != null) {
@@ -21,16 +18,17 @@ class ProductService
             } else {
                 $product = new Product();
             }
-            $client = $this->entityManager->find(Product::class,$idClient);
-            $specialist = $this->entityManager->find(Product::class,$idSpecialist);
+            $client = $this->entityManager->find(Product::class,$client);
+            $specialist = $this->entityManager->find(Product::class,$specialist);
             $product-> setClient($client)
-                    -> setSpecialist($specialist);
+                -> setSpecialist($specialist);
             $this->entityManager->persist($product);
             $this->entityManager->flush();
         } catch(ORMException $e) {
             throw new ("Ошибка: " . $e->getMessage());
         }
     }
+    
     public function deleteProduct( int $id)
     {
         try {
@@ -41,10 +39,11 @@ class ProductService
             throw new ("Ошибка: " . $e->getMessage());
         }
     }
+    
     public function showProduct(int $id)
     {
         try {
-          return $this->entityManager->find(Product::class, $id);
+            return $this->entityManager->find(Product::class, $id);
         } catch (ORMException $e) {
             throw new ("Ошибка: " . $e->getMessage());
         }
