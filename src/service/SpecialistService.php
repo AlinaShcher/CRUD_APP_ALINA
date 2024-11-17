@@ -4,6 +4,7 @@ use Src\Repository\SpecialistRepository;
 use Src\Entity\Specialist;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\EntityManager;
 
 class SpecialistService
 {
