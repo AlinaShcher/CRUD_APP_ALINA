@@ -1,6 +1,5 @@
 <?php
 namespace Src\Controller\SpecialistController; ;
-use Src\Entity\Specialist;
 use Src\Service\SpecialistService;
 class SpecialistController
 {
