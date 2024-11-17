@@ -2,8 +2,8 @@
 namespace Src\Repository\ClientRepository;
 use Doctrine\ORM\EntityRepository;
 use Src\Entity\Client;
-
 use Doctrine\ORM\Mapping as ORM;
+
 class ClientRepository extends EntityRepository
 {
     public function save(Client $client)
