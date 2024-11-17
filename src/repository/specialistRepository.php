@@ -1,7 +1,7 @@
 <?php
 use Doctrine\ORM\EntityRepository;
 
-class specialistRepository extends EntityRepository{
+class SpecialistRepository extends EntityRepository{
 
     public function save(Specialist $specialist){
         $em = $this->getEntityManager();
