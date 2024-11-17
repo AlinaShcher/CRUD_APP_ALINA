@@ -20,7 +20,6 @@ class ProductService
             } else {
                 $product = new Product();
             }
-
             $client = $this->entityManager->find(Product::class,$idClient);
             $specialist = $this->entityManager->find(Product::class,$idSpecialist);
             $product-> setIdclient($client)
