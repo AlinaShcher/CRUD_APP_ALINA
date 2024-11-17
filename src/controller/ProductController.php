@@ -1,7 +1,7 @@
 <?php
-namespace src\controller\ProductController;
-use src\entity\Product;
-use src\service\ProductService;
+namespace Src\Controller\ProductController;
+use Src\Entity\Product;
+use Src\Service\ProductService;
 use Exception;
 
 class ProductController
