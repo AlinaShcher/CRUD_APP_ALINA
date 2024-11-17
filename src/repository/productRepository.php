@@ -1,8 +1,9 @@
 <?php
-namespace src\repository\ProductRepository;
-use src\entity\Product;
+namespace Src\Repository\ProductRepository;
+use Src\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
-class productRepository
+
+class ProductRepository
 {
     private$entityManager;
     public function __construct(EntityManagerInterface $entityManager)
