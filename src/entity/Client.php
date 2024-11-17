@@ -1,5 +1,5 @@
 <?php
-namespace src\entity\Client;
+namespace Src\Entity\Client;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
