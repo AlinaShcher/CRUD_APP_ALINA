@@ -6,7 +6,7 @@ use Doctrine\ORM\Exception\ORMException;
 
 class ClientService
 {
-    private $entityManager;
+    private EntityManager $entityManager;
     
     public function __construct(EntityManager $entityManager)
     {
