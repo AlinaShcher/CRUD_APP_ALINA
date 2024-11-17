@@ -1,10 +1,10 @@
 <?php
-namespace src\repository\clientRepository;
+namespace Src\Repository\ClientRepository;
 use Doctrine\ORM\EntityRepository;
-use src\entity\Client;
+use Src\Entity\Client;
 
 use Doctrine\ORM\Mapping as ORM;
-class clientRepository extends EntityRepository
+class ClientRepository extends EntityRepository
 {
     public function save(Client $client)
     {
