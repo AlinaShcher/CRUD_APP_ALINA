@@ -13,6 +13,6 @@ class ProductRepository extends EntityRepository {
             -> groupBy('p.idSpecialist')
             -> orderBy ('count','DESC')
             ->setMaxResults(1);
-        return getQuery()->getResult();
+        return $qb->getQuery()->getResult();
     }
 }
