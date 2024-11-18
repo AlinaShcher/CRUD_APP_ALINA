@@ -1,5 +1,6 @@
 <?php
 namespace Src\Controller\ProductController;
+
 use Src\Entity\Product;
 use Src\Service\ProductService;
 use Exception;
@@ -7,10 +8,12 @@ use Exception;
 class ProductController
 {
     private ProductService $productService;
+    
     public function __construct()
     {
         $this->productService = new ProductService();
     }
+    
     public function createProduct()
     {
         if (!isset($_REQUEST['id']) ) {
@@ -18,13 +21,12 @@ class ProductController
         }
         $this->productService->createProduct(($_REQUEST['id']));
     }
+    
     public function deleteProduct()
     {
-        if (!isset($_REQUEST['id'])){
+        if (!isset($_REQUEST['id'])) {
             throw new Exception("Неверные параметры запроса", 400);
         }
         $this->productService->deleteProduct($_REQUEST['id']);
     }
-
-
 }
