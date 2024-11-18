@@ -1,5 +1,6 @@
 <?php
 namespace Src\Service\ClientService;
+
 use Src\Repository\ClientRepository;
 use Src\Entity\Client;
 use Doctrine\ORM\Exception\ORMException;
@@ -14,7 +15,7 @@ class ClientService
         $this->entityManager = $entityManager;
     }
     
-    public function deleteClient (int $id)
+    public function deleteClient (int $id): void
     {
         try {
             $client = $this->entityManager->find(Client::class, $id);
@@ -25,4 +26,3 @@ class ClientService
         }
     }
 }
-
