@@ -1,6 +1,8 @@
 <?php
-namespace Src\Controller\SpecialistController; ;
+namespace Src\Controller\SpecialistController;
+
 use Src\Service\SpecialistService;
+
 class SpecialistController
 {
     private SpecialistService $specialistService;
