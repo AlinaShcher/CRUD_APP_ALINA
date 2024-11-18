@@ -1,5 +1,6 @@
 <?php
 namespace Src\Entity\Product;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Src\Entity\Client;
