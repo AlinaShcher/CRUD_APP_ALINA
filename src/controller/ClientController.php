@@ -1,5 +1,6 @@
 <?php
 namespace Src\Controller\ProductController;
+
 use Src\Service\ProductService;
 use Exception;
 
@@ -22,7 +23,7 @@ class ProductController
     
     public function deleteProduct()
     {
-        if (!isset($_REQUEST['id'])){
+        if (!isset($_REQUEST['id'])) {
             throw new Exception("Неверные параметры запроса", 400);
         }
         $this->productService->deleteProduct($_REQUEST['id']);
