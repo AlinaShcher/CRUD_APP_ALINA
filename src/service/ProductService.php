@@ -1,5 +1,6 @@
 <?php
 namespace Src\Service\ProductService;
+
 use Src\Entity\Product;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\EntityManager;
@@ -13,7 +14,7 @@ class ProductService
         $this->entityManager = $entityManager;
     }
     
-    public function createProduct(int $id, int $client, int $specialist)
+    public function createProduct(int $id, int $client, int $specialist): Product
     {
         try {
             if ($id != null) {
@@ -32,7 +33,7 @@ class ProductService
         }
     }
     
-    public function deleteProduct( int $id)
+    public function deleteProduct(int $id): void
     {
         try {
             $product = $this->entityManager->find(Product::class, $id);
@@ -43,7 +44,7 @@ class ProductService
         }
     }
     
-    public function showProduct(int $id)
+    public function showProduct(int $id): Product
     {
         try {
             return $this->entityManager->find(Product::class, $id);
