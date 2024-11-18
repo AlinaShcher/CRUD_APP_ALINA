@@ -1,21 +1,18 @@
-<?php
 namespace Src\Service\SpecialistService;
-use Src\Repository\SpecialistRepository;
+
 use Src\Entity\Specialist;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\EntityManager;
-
 class SpecialistService
 {
     private EntityManager $entityManager;
-    
+
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
-    
-    public function deleteSpecialist (int $id)
+
+    public function deleteSpecialist (int $id): void
     {
         try {
             $specialist = $this->entityManager->find(Specialist::class, $id);
@@ -25,4 +22,5 @@ class SpecialistService
             throw new ("Ошибка: " . $e->getMessage());
         }
     }
+
 }
