@@ -1,3 +1,4 @@
+<?php
 namespace Src\Service\SpecialistService;
 
 use Src\Entity\Specialist;
