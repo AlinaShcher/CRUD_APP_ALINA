@@ -4,6 +4,7 @@ namespace Src\Service\SpecialistService;
 use Src\Entity\Specialist;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\EntityManager;
+
 class SpecialistService
 {
     private EntityManager $entityManager;
