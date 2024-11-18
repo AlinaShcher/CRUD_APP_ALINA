@@ -23,5 +23,4 @@ class SpecialistService
             throw new ("Ошибка: " . $e->getMessage());
         }
     }
-
 }
