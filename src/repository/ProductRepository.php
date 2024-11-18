@@ -7,7 +7,7 @@ class ProductRepository extends EntityRepository {
 
     public function getBestSpecialist()
     {
-        $qb = $this->EntityManager->createQueryBuilder();
+        $qb = $this->createQueryBuilder('p');
         $qb ->select('p.idSpecialist', 'COUNT(*) as count')
             ->from('Product','p')
             -> groupBy('p.idSpecialist')
