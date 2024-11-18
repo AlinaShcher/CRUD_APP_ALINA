@@ -1,5 +1,6 @@
 <?php
 namespace Src\Repository\ProductRepository;
+
 use Doctrine\ORM\EntityRepository;
 use Src\Entity\Product;
 
