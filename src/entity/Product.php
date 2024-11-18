@@ -4,6 +4,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Src\Entity\Client;
 use Src\Entity\Specialist;
+use Src\Repository\ProductRepository;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
@@ -16,11 +17,11 @@ class Product
     #[ORM\GeneratedValue(strategy:"SEQUENCE")]
     #[ORM\SequenceGenerator]
     private int $id;
-    
+
     #[ManyToOne(targetEntity: Client::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'client', referencedColumnName: 'id')]
     private Client $client;
-    
+
     #[ManyToOne(targetEntity: Specialist::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'specialist', referencedColumnName: 'id')]
     private Specialist $specialist;
@@ -34,62 +35,65 @@ class Product
     #[ORM\Column(name: 'cost', type: Types::STRING)]
     private string $cost;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
-    
-    public function getClient(): ?int
+
+    public function setId(int $id): Product
+    {
+        $this->id = $id;
+    }
+
+    public function getClient(): Client
     {
         return $this->client;
     }
-    
-    public function getSpecialist(): ?int
+
+    public function setClient(Client $client): Product
+    {
+        $this->client = $client;
+        return $this;
+    }
+
+    public function getSpecialist(): Specialist
     {
         return $this->specialist;
     }
-    
-    public function getModel(): string {
-        return $this->model;
-    }
-    
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    
-    public function getCost(): string
-    {
-        return $this->cost;
-    }
-    
-    public function setId(int $id): product
-    {
-        $this->id = $id;
-        return $this;
-    }
-    
-    public function setClient(int $client): void
-    {
-        $this->client = $client;
-    }
-    
-    public function setSpecialist(int $specialist): void
+
+    public function setSpecialist(Specialist $specialist): Product
     {
         $this->specialist = $specialist;
     }
-    
+
+    public function getModel(): string
+    {
+        return $this->model;
+    }
+
     public function setModel(string $model): void
     {
         $this->model = $model;
     }
-    
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
     public function setStatus(string $status): void
     {
         $this->status = $status;
     }
-    
-    public function setCost(string $cost): void {
+
+    public function getCost(): string
+    {
+        return $this->cost;
+    }
+
+    public function setCost(string $cost): void
+    {
         $this->cost = $cost;
     }
+    
 }
