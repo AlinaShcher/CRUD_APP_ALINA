@@ -14,7 +14,7 @@ class SpecialistService
         $this->entityManager = $entityManager;
     }
 
-    public function deleteSpecialist (int $id): void
+    public function deleteSpecialist(int $id): void
     {
         try {
             $specialist = $this->entityManager->find(Specialist::class, $id);
