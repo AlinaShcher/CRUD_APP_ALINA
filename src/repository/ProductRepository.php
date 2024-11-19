@@ -9,13 +9,12 @@ class ProductRepository extends EntityRepository
 
     public function getBestSpecialist()
     {
-        $qb = $this->createQueryBuilder('p');
-        return $qb ->select('p.idSpecialist', 'COUNT(*) as count')
-                    ->from('Product','p')
-                    -> groupBy('p.idSpecialist')
-                    -> orderBy ('count','DESC')
-                    ->setMaxResults(1)
-                    ->getQuery()
-                    ->getResult();
+        $qb = $this->getEntityManager()->createQueryBuilder('p');
+        $qb ->select('p.specialist', 'COUNT(*) as count')
+            ->from('Product','p')
+            -> groupBy('p.specialist')
+            -> orderBy ('count','DESC')
+            ->setMaxResults(1);
+        return $qb->getQuery()->getResult();
     }
 }
