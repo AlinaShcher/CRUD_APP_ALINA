@@ -15,7 +15,7 @@ class ClientService
         $this->entityManager = $entityManager;
     }
     
-    public function deleteClient (int $id): void
+    public function deleteClient(int $id): void
     {
         try {
             $client = $this->entityManager->find(Client::class, $id);
