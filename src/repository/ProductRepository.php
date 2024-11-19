@@ -4,7 +4,8 @@ namespace Src\Repository\ProductRepository;
 use Doctrine\ORM\EntityRepository;
 use Src\Entity\Product;
 
-class ProductRepository extends EntityRepository {
+class ProductRepository extends EntityRepository 
+{
 
     public function getBestSpecialist()
     {
