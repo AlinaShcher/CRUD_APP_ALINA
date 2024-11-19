@@ -14,7 +14,7 @@ class ProductService
         $this->entityManager = $entityManager;
     }
     
-    public function createProduct(int $id, int $client, int $specialist): Product
+    public function createProduct(int $id, int $client, int $specialist): void
     {
         try {
             if ($id != null) {
@@ -44,7 +44,7 @@ class ProductService
         }
     }
     
-    public function showProduct(int $id): Product
+    public function showProduct(int $id): array
     {
         try {
             return $this->entityManager->find(Product::class, $id);
