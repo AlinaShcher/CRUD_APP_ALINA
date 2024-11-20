@@ -8,7 +8,7 @@ class ProductController
 {
     private ProductService $productService;
     
-    public function __construct()
+    public function __construct($entityManager)
     {
         $this->productService = new ProductService();
     }
