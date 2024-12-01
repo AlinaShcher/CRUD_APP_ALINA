@@ -13,10 +13,10 @@ class DocumentController
         $this->documentService = new DocumentService();
     }
     
-    public function htmlGet()
+    public function getHtml()
     {
         try {
-            $this->documentService->htmlGet();
+            $this->documentService->getHtml();
         } catch(ORMException $e) {
             throw new ("Ошибка: " . $e->getMessage());
         }
