@@ -5,6 +5,7 @@ namespace machine\api;
 use Src\Controller\ClientController;
 use Src\Controller\ProductController;
 use Src\Controller\SpecialistController;
+use Exception;
 
 require_once(dirname(__DIR__) . '/machine/bootstrap.php');
 
