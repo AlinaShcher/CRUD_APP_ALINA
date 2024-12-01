@@ -1,12 +1,10 @@
 <?php
 
 namespace machine\api;
-use app\service\ClientService;
-use machine\src\controller\ClientController;
-use app\service\ProductService;
-use machine\src\controller\ProductController;
-use app\service\SpecialistService;
-use machine\src\controller\SpecialistController;
+
+use Src\Controller\ClientController;
+use Src\Controller\ProductController;
+use Src\Controller\SpecialistController;
 
 require_once(dirname(__DIR__) . '/machine/bootstrap.php');
 
