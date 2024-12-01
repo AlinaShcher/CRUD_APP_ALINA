@@ -17,7 +17,7 @@ class DocumentService
         $this->entityManager = $entityManager;
     }
 
-    public function getHtml()
+    public function getHtml(): void
     {
         $loader = new \Twig\Loader\FilesystemLoader('templates');
         $twig = new \Twig\Environment($loader);
